@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>FFmpeg WASM</title>
+  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.min.js"></script>
+</head>
+<body>
+<script>
+  let ffmpeg;
+  let ffmpegReady = false;
+
+  async function initFFmpeg() {
+    const { createFFmpeg, fetchFile } = FFmpegWASM.FFmpeg;
+    ffmpeg = createFFmpeg({ log: true });
+    await ffmpeg.load();
+    ffmpegReady = true;
+
+    // Re-define processMedia only after FFmpeg is loaded
+    window.processMedia = async function (inputUrl, thumbUrl, title, artist) {
+      try {
+        const inputBlob = await fetch(inputUrl).then(r => r.blob());
+        const thumbBlob = await fetch(thumbUrl).then(r => r.blob());
+
+        ffmpeg.FS('writeFile', 'input.webm', await fetchFile(inputBlob));
+        ffmpeg.FS('writeFile', 'cover.png', await fetchFile(thumbBlob));
+
+        await ffmpeg.run(
+          '-i', 'input.webm',
+          '-i', 'cover.png',
+          '-map', '0:a', '-map', '1',
+          '-c:a', 'libmp3lame',
+          '-b:a', '192k',
+          '-metadata', `title=${title}`,
+          '-metadata', `artist=${artist}`,
+          '-disposition:v:0', 'attached_pic',
+          'output.mp3'
+        );
+
+        const data = ffmpeg.FS('readFile', 'output.mp3');
+        const base64 = btoa(String.fromCharCode(...data));
+        window.Android.onMp3Ready(base64);
+      } catch (e) {
+        window.Android.onMp3Ready("ERROR: " + e.toString());
+      }
+    };
+  }
+
+  initFFmpeg();
+</script>
+</body>
+</html>

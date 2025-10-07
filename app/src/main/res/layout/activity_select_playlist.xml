@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:paddingTop="50dp"
+    tools:context=".AddSongsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/playlistBackBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:foreground="@drawable/baseline_arrow_back_ios_new_24"
+                android:foregroundTint="@color/textColor"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Playlist"
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="20dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:layout_weight="1">
+<!--            <Button-->
+<!--                android:id="@+id/playlistAddSongsBtn"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:background="@color/transparent"-->
+<!--                android:textColor="@color/textColorSecondary"-->
+<!--                android:enabled="false"-->
+<!--                android:text="Add"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="20dp"-->
+<!--                android:padding="0dp"-->
+<!--                android:gravity="center"/>-->
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/loadingBar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_gravity="center"/>
+    <EditText
+        android:id="@+id/playlistSelectPlaylistSearch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Search..."
+        android:maxLines="1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/tracklistview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
+    </ScrollView>
+
+</LinearLayout>

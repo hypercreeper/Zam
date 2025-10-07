@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:paddingTop="40dp"
+    tools:context=".ViewPlaylistFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/playlistBackBtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/transparent"
+                    android:foreground="@drawable/baseline_arrow_back_ios_new_24"
+                    android:foregroundTint="@color/textColor"
+                    android:gravity="center"/>
+                <ImageView
+                    android:id="@+id/playlistCoverImageViewHeader"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/default_music_icon" />
+                <LinearLayout
+                    android:id="@+id/playlistInfoHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/playlistNameHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:ellipsize="marquee"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textColor="@color/textColor"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="Song Name"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/playlistSongCountHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="@font/inter_semibold"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:layout_marginTop="-5dp"
+                        android:text="0 Songs"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:layout_weight="0">
+                <Button
+                    android:id="@+id/playlistAddSongsBtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:foreground="@drawable/baseline_add_24"
+                    android:foregroundTint="@color/textColor"
+                    android:gravity="center"/>
+                <Button
+                    android:id="@+id/playlistMoreOptions"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:foreground="@drawable/baseline_more_vert_24"
+                    android:foregroundTint="@color/textColor"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tracklistview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="110dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"/>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/playlistStartPlayingBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="120dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/primary"
+        android:foreground="@drawable/baseline_play_arrow_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/playlistStartPlayingShuffledBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="127dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/primary"
+        android:foreground="@drawable/baseline_shuffle_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/playlistStartPlayingBtn" />
+
+    <LinearLayout
+        android:id="@+id/editModeBar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/background"
+        app:layout_constraintEnd_toEndOf="parent">
+        <Button
+            android:id="@+id/editModeBarShareBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:drawableTop="@drawable/media3_icon_share"
+            android:foregroundGravity="center"
+            android:clickable="true"
+            android:text="Share"
+            android:textColor="@color/textColor"/>
+        <Button
+            android:id="@+id/editModeBarRemoveFromPlaylistBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:drawableTop="@drawable/media3_icon_playlist_remove"
+            android:foregroundGravity="center"
+            android:clickable="true"
+            android:text="Remove"
+            android:textColor="@color/textColor"/>
+        <Button
+            android:id="@+id/editModeBarSkipFromPlaylistBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:drawableTop="@drawable/media3_icon_playlist_remove"
+            android:foregroundGravity="center"
+            android:clickable="true"
+            android:text="Skip Track"
+            android:textColor="@color/textColor"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

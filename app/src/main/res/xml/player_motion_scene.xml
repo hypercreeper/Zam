@@ -1,0 +1,140 @@
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@id/collapsed"
+        motion:constraintSetEnd="@id/expanded"
+        motion:duration="300">
+        <OnSwipe
+            motion:touchAnchorId="@id/MinimizedPlayerBG"
+            motion:touchAnchorSide="top"
+            motion:dragDirection="dragUp"
+            motion:maxVelocity="5000"
+            motion:maxAcceleration="500"
+            motion:touchRegionId="@id/MinimizedPlayerBG" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetStart="@id/expanded"
+        motion:constraintSetEnd="@id/collapsed"
+        motion:duration="300">
+        <OnSwipe
+            motion:touchAnchorId="@id/MinimizedPlayerBG"
+            motion:touchAnchorSide="bottom"
+            motion:dragDirection="dragDown"
+            motion:maxVelocity="5000"
+            motion:maxAcceleration="500"
+            motion:touchRegionId="@id/MinimizedPlayerBG" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/collapsed">
+        <Constraint
+            android:id="@id/MinimizedPlayerBG"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- ImageView smaller in collapsed state -->
+        <Constraint
+            android:id="@id/MinimizedPlayerImageView"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginLeft="12dp"
+            motion:layout_constraintStart_toStartOf="@id/MinimizedPlayerBG"
+            motion:layout_constraintTop_toTopOf="@id/MinimizedPlayerBG" />
+
+        <!-- Song name and artist smaller -->
+        <Constraint
+            android:id="@id/MinimizedPlayerSongNameView"
+            android:textSize="16sp"
+            motion:layout_constraintStart_toEndOf="@id/MinimizedPlayerImageView"
+            motion:layout_constraintTop_toTopOf="@id/MinimizedPlayerBG" />
+
+        <Constraint
+            android:id="@id/MinimizedPlayerArtistView"
+            android:textSize="12sp"
+            motion:layout_constraintStart_toEndOf="@id/MinimizedPlayerImageView"
+            motion:layout_constraintTop_toBottomOf="@id/MinimizedPlayerSongNameView" />
+
+        <!-- Buttons small in collapsed state -->
+        <Constraint
+            android:id="@id/MinimizedPlayerPreviousBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            motion:layout_constraintEnd_toStartOf="@id/MinimizedPlayerPlayPauseBtn"
+            motion:layout_constraintBottom_toBottomOf="@id/MinimizedPlayerBG" />
+
+        <Constraint
+            android:id="@id/MinimizedPlayerPlayPauseBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            motion:layout_constraintEnd_toStartOf="@id/MinimizedPlayerNextBtn"
+            motion:layout_constraintBottom_toBottomOf="@id/MinimizedPlayerBG" />
+
+        <Constraint
+            android:id="@id/MinimizedPlayerNextBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            motion:layout_constraintEnd_toEndOf="@id/MinimizedPlayerBG"
+            motion:layout_constraintBottom_toBottomOf="@id/MinimizedPlayerBG" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/expanded">
+        <Constraint
+            android:id="@id/MinimizedPlayerBG"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="0dp" />
+
+        <!-- ImageView larger and centered -->
+        <Constraint
+            android:id="@id/MinimizedPlayerImageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/MinimizedPlayerBG" />
+
+        <!-- Song name and artist larger and centered -->
+        <Constraint
+            android:id="@id/MinimizedPlayerSongNameView"
+            android:textSize="24sp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/MinimizedPlayerImageView" />
+
+        <Constraint
+            android:id="@id/MinimizedPlayerArtistView"
+            android:textSize="18sp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/MinimizedPlayerSongNameView" />
+
+        <!-- Buttons larger and centered below song name -->
+        <Constraint
+            android:id="@id/MinimizedPlayerPreviousBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/MinimizedPlayerArtistView" />
+
+        <Constraint
+            android:id="@id/MinimizedPlayerPlayPauseBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            motion:layout_constraintStart_toEndOf="@id/MinimizedPlayerPreviousBtn"
+            motion:layout_constraintTop_toBottomOf="@id/MinimizedPlayerArtistView" />
+
+        <Constraint
+            android:id="@id/MinimizedPlayerNextBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            motion:layout_constraintStart_toEndOf="@id/MinimizedPlayerPlayPauseBtn"
+            motion:layout_constraintTop_toBottomOf="@id/MinimizedPlayerArtistView" />
+    </ConstraintSet>
+
+</MotionScene>

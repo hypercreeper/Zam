@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".PlaylistsFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:id="@+id/PlaylistsCardView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:useDefaultMargins="true"
+            android:paddingBottom="110dp"
+            android:clipToPadding="false">
+
+            <LinearLayout
+                android:id="@+id/createPlaylistBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_marginLeft="40px"
+                android:layout_marginRight="40px">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/image_view_corner_radius"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/media3_icon_plus" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/inter_semibold"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="Create Playlist"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+        </GridLayout>
+    </ScrollView>
+</LinearLayout>
